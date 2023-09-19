@@ -8,15 +8,18 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class ChatViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     
+    let db = Firestore.firestore()
+    
     var messages: [Message] = [
     Message(sender: "1@gmail.com", body: "Hi there"),
-    Message(sender: "2@gmail.com", body: "Hi there - 2"),
+    Message(sender: "2@gmail.com", body: "Съешь ещё этих мягких французских булок, да выпей же чаю  "),
     Message(sender: "3@gmail.com", body: "Hi there - 3")
     ]
     
@@ -28,11 +31,32 @@ class ChatViewController: UIViewController {
         navigationItem.hidesBackButton = true
         navigationItem.title = Constants.appName
 
-        tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
+        tableView.register(UINib(
+            nibName: Constants.cellNibName,
+            bundle: nil
+            ), forCellReuseIdentifier: Constants.cellIdentifier
+        )
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
+        
+        if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
+            db.collection(Constants.FStore.collectionName).addDocument(
+                data: [
+                    Constants.FStore.senderField : messageSender,
+                    Constants.FStore.bodyField : messageBody
+                ]
+            ) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added successfully")
+                }
+            }
+        }
+        
     }
+        
     
 
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
