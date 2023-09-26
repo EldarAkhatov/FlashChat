@@ -21,11 +21,18 @@
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xF3-Ai-Uun">
                         <rect key="frame" x="10" y="10" width="366" height="186"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YouAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="Ey6-UA-x9y">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="IjF-yx-1Mh"/>
+                                    <constraint firstAttribute="height" constant="40" id="wm4-N2-sv1"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsQ-4a-1W1">
-                                <rect key="frame" x="0.0" y="0.0" width="306" height="121.66666666666667"/>
+                                <rect key="frame" x="60" y="0.0" width="246" height="182.33333333333334"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzH-Ju-pHh">
-                                        <rect key="frame" x="10" y="10" width="286" height="101.66666666666667"/>
+                                        <rect key="frame" x="10" y="10" width="226" height="162.33333333333334"/>
                                         <string key="text">Label LabelLabel Label LabelLabelLabel LabelLabelLabel LabelLabelLabel LabelLabelLabel LabelLabelLabel LabelLabelLabel LabelLabelLabel LabelLabel</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BrandLightPurple"/>
@@ -60,6 +67,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="label" destination="NzH-Ju-pHh" id="Dcj-fB-G3h"/>
+                <outlet property="leftImageView" destination="Ey6-UA-x9y" id="8IT-vO-MYX"/>
                 <outlet property="messageBubble" destination="WsQ-4a-1W1" id="fMC-hw-Zvc"/>
                 <outlet property="rightImageView" destination="Qy9-YY-3Z8" id="yq7-cd-1Va"/>
             </connections>
@@ -68,6 +76,7 @@
     </objects>
     <resources>
         <image name="MeAvatar" width="36" height="36"/>
+        <image name="YouAvatar" width="36" height="36"/>
         <namedColor name="BrandLightPurple">
             <color red="0.98000001907348633" green="0.9649999737739563" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
